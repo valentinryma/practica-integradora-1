@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "title": "Table",
+        "code": "123ABC",
+        "price": 70,
+        "status": true,
+        "stock": 50,
+        "category": "Furnites",
+        "thumbnails": [
+            "/img/furnites/table1.png",
+            "/img/furnites/table2.png",
+            "/img/furnites/table3.png"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Chair",
+        "code": "456DEF",
+        "price": 50,
+        "status": true,
+        "stock": 40,
+        "category": "Furnites",
+        "thumbnails": [
+            "/img/furnites/chair1.png",
+            "/img/furnites/chair2.png",
+            "/img/furnites/chair3.png"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Sofa",
+        "code": "789GHI",
+        "price": 300,
+        "status": true,
+        "stock": 20,
+        "category": "Furnites",
+        "thumbnails": [
+            "/img/furnites/sofa1.png",
+            "/img/furnites/sofa2.png",
+            "/img/furnites/sofa3.png"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Bed",
+        "code": "ABC123",
+        "price": 400,
+        "status": false,
+        "stock": 10,
+        "category": "Furnites",
+        "thumbnails": [
+            "/img/furnites/bed1.png",
+            "/img/furnites/bed2.png",
+            "/img/furnites/bed3.png"
+        ]
+    }
+]
