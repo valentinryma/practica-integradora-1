@@ -1,3 +1,4 @@
+//? [ Product Manager - Mongo ]
 const ProductModel = require(`${__dirname}/../models/products.js`)
 
 class ProductManager {

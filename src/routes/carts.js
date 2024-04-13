@@ -1,3 +1,4 @@
+//? [ Cart Rotuer ]
 const { Router } = require('express');
 const router = Router();
 
@@ -39,23 +40,17 @@ router.post('/', async (req, res) => {
     }
 })
 
+// TODO: Error al crear agregar un producto a un carrito
 router.post('/:cid/product/:pid', async (req, res) => {
-    const cid = +req.params.cid;
-    const productId = +req.params.pid;
-    const quantity = +req.body.quantity;
-
-    if (productId < 0 || isNaN(productId)) {
-        res.status(400)
-            .json({ error: "Product not found" })
-    }
+    const cid = req.params.cid;
+    const pid = req.params.pid;
+    const quantity = req.body.quantity;
 
     try {
+        // Obtenemos una instancia del Cart Manager
         const cartManager = req.app.get(cManager);
-        const cart = await cartManager.addProductCart(cid, {
-            productId,
-            quantity
-        });
 
+        const cart = await cartManager.addProductCart(cid, { pid, quantity });
         res.json(cart);
     } catch (error) {
         console.error(error)

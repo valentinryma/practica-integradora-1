@@ -8,4 +8,9 @@
 * `npm start`: Inicia el serivdor
 
 **Endpoints:**
-TODO
+//? ----------------------------------------
+// TODO:
+// - Cart: Fs / Db Manager 
+// - Messages: View message (Hanldebars)
+// - Pruebas clase 08.
+//? ----------------------------------------

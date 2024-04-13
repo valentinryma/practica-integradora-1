@@ -1,8 +1,10 @@
 //? ----------------------------------------
 // TODO:
-// - Cart: Fs / Db Manager 
 // - Messages: View message (Hanldebars)
 // - Pruebas clase 08.
+//? ----------------------------------------
+// TODO: DO IT
+// - Cart: Fs / Db Manager 
 //? ----------------------------------------
 
 const express = require('express');
@@ -11,7 +13,7 @@ const mongoose = require('mongoose');
 
 //* Managers con MoongoDB
 const ProductDBManager = require(`${__dirname}/dao/dbManager/productManager.js`);
-//! const CartDBManager = require(`${__dirname}/dao/dbManager/cartManager.js`)
+const CartDBManager = require(`${__dirname}/dao/dbManager/cartManager.js`)
 
 //* Managers con FileSystem
 // const ProductFileManager = require(`${__dirname}/dao/fileManager/productManager.js`)
@@ -48,7 +50,7 @@ const main = async () => {
 
     //* Manager con DB
     const productManager = new ProductDBManager();
-    //! const cartManager = new CartDBManager();
+    const cartManager = new CartDBManager();
 
     //* Manager con FS
     // const productDB = `${__dirname}/dao/dbFile/products.json`;
@@ -57,11 +59,11 @@ const main = async () => {
     // const cartManager = new CartFileManager(cartDB, productDB);
 
     await productManager.prepare();
-    //! await cartManager.prepare();
+    await cartManager.prepare();
 
     // Guardamos las instancias de los managers, en `req.app.get(Manager)`
     app.set('productManager', productManager);
-    //! app.set('cartManager', cartManager);
+    app.set('cartManager', cartManager);
 
     // Server HTTP
     const PORT = process.env.PORT || 8080;

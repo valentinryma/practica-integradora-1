@@ -1,14 +1,13 @@
+//? [ Carts Model - Mongo ]
 const mongoose = require('mongoose');
 
 const collection = 'carts';
 
-const prodcutSchema = new mongoose.Schema({
-    productId: { type: Number, require: true },
-    quantity: { type: Number, require: true, default: 1 }
-})
-
 const schema = new mongoose.Schema({
-    products: [prodcutSchema],
+    products: [{
+        type: mongoose.Schema.Types.ObjectId,
+        quantity: { type: Number, require: true }
+    }],
 })
 
 
@@ -17,4 +16,4 @@ schema.virtual('id').get(function () {
     return this._id.toString();
 });
 
-module.exports = mongoose.model('Cart', schema, collection)
+module.exports = mongoose.model('Cart', schema, collection);
