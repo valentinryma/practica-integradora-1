@@ -51,10 +51,23 @@ router.post('/:cid/product/:pid', async (req, res) => {
         const cartManager = req.app.get(cManager);
 
         const cart = await cartManager.addProductCart(cid, { pid, quantity });
-        res.json(cart);
+        res.json({ success: true, cart: cart });
     } catch (error) {
         console.error(error)
         return res.status(400).json({ success: false });
+    }
+})
+
+router.delete('/:cid', async (req, res) => {
+    const cartManager = req.app.get(cManager);
+    const cid = req.params.cid;
+
+    try {
+        const cart = await cartManager.deleteById(cid);
+        res.json({ success: true, cartDeleted: cart });
+    } catch (error) {
+        console.error(error)
+        return res.status(400).json({ success: false })
     }
 })
 

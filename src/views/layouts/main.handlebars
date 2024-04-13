@@ -7,16 +7,27 @@
     <title>{{title}}</title>
 
     {{#each styles}}
-    <link rel="stylesheet" href="cs/{{this}}">
+    <link rel="stylesheet" href="/css/{{this}}">
     {{/each}}
 </head>
 
 <body>
     {{{body}}}
 
+    {{!-- Sweet Alert --}}
+    {{#if useSweetAlert}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{/if}}
+
+    {{!-- WS --}}
+    {{#if useWS}}
+    <script src="/socket.io/socket.io.js"></script>
+    {{/if}}
+
+    {{!-- Scripts --}}
     {{#each scripts}}
-    <script src="js/{{this}}"></script>
-    {{/each }}
+    <script src="/js/{{this}}"></script>
+    {{/each}}
 </body>
 
 </html>

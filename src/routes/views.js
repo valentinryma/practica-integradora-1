@@ -13,4 +13,18 @@ router.get('/', async (req, res) => {
     });
 });
 
+router.get('/chat', async (_, res) => {
+    res.render('chat', {
+        title: 'Chat',
+        useWS: true,
+        useSweetAlert: true,
+        scripts: [
+            'chat.js'
+        ],
+        styles: [
+            'style.css'
+        ]
+    })
+})
+
 module.exports = router;

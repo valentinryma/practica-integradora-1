@@ -1,7 +1,6 @@
 // Importamos los Modelo Carts y Products 
 const CartModel = require(`${__dirname}/../models/carts.js`);
 const ProductModel = require(`${__dirname}/../models/products.js`);
-const mongoose = require('mongoose');
 
 // Creamos la Clase del Cart Manager
 class CartManager {
@@ -45,13 +44,11 @@ class CartManager {
         }
     }
 
-    // TODO
-    // mongoose.Types.ObjectId("51bb793aca2ab77a3200000d")
     async addProductCart(cid, product) {
         // cid, { pid, quantity }
         // 312s12q344, { 312a833b91f4, 5}
         const pid = product.pid;
-        const quantity = product.quantity;
+        const quantity = +product.quantity;
         try {
             // Verifica que exista el carrito
             const cartFound = await CartModel.findOne({ _id: cid });
@@ -65,33 +62,19 @@ class CartManager {
                 throw new Error('Product not found')
             }
 
-            // TODO: Terminar Agregar el producto
-            try {
-
-                const cartToAdd = {
-                    id: cid,
-                    product: [{
-                        id: pid,
-                        quantity
-                    }]
-                }
-
-                // console.log(cartToAdd);
-                const cartUpdate = await CartModel.create({
-                    products: [{ id: pid }, { quantity }]
-                });
-
-                console.log(cartUpdate);
-                return cartUpdate;
-            } catch (error) {
-                console.error(error);
-                return { error: 'pincho' }
-            }
-
+            // Agregar el producto
+            const cartUpdate = await CartModel.findByIdAndUpdate(cid, {
+                products: [{ _id: pid, quantity }]
+            });
+            return cartUpdate;
         } catch (error) {
             console.error(error);
             return { error: error.message }
         }
+    }
+
+    async deleteById(id) {
+        await CartModel.deleteOne({ _id: id });
     }
 }
 
